@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>BLACK HOST | Free Website Hosting</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="loadingScreen" class="loading-screen">
+    <div class="loader">
+        <div class="loader-spinner"></div>
+        <span>BLACK HOST</span>
+        <span class="loader-sub">Free Website Hosting</span>
+    </div>
+</div>
+
+<div id="toastContainer" class="toast-container"></div>
+
+<nav class="navbar">
+    <div class="nav-container">
+        <a href="#home" class="logo">
+            <i class="fas fa-cloud-upload-alt"></i>
+            <span>BLACK<span>HOST</span></span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#home" class="nav-link active">HOME</a></li>
+            <li><a href="#dashboard" class="nav-link">DASHBOARD</a></li>
+            <li><a href="#preview" class="nav-link">PREVIEW</a></li>
+        </ul>
+        <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+    </div>
+</nav>
+
+<main>
+    <section id="home" class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i class="fas fa-crown"></i>
+                <span>100% FREE Hosting</span>
+            </div>
+            <h1 class="hero-title">Free <span>Website</span> Hosting</h1>
+            <p class="hero-subtitle">Upload your HTML/CSS/JS files and get a live preview instantly</p>
+            <div class="hero-stats">
+                <div class="stat"><span>Unlimited</span><p>Storage</p></div>
+                <div class="stat"><span>Free</span><p>Hosting</p></div>
+                <div class="stat"><span>Instant</span><p>Preview</p></div>
+            </div>
+            <a href="#dashboard" class="hero-btn">Start Hosting <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </section>
+
+    <section id="dashboard" class="dashboard-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Your <span>Dashboard</span></h2>
+                <p class="section-desc">Upload, manage, and preview your websites for free</p>
+            </div>
+            
+            <div class="dashboard-stats">
+                <div class="stat-card">
+                    <i class="fas fa-globe"></i>
+                    <div class="stat-info">
+                        <h3>Active Websites</h3>
+                        <span class="stat-number" id="activeSites">0</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-database"></i>
+                    <div class="stat-info">
+                        <h3>Total Storage</h3>
+                        <span class="stat-number" id="totalStorage">0</span>
+                        <span class="stat-unit">KB</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-eye"></i>
+                    <div class="stat-info">
+                        <h3>Total Views</h3>
+                        <span class="stat-number" id="totalViews">0</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="upload-area">
+                <div class="upload-box" id="uploadBox">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <h3>Upload Your Website</h3>
+                    <p>Drag & drop your HTML/CSS/JS files here or click to browse</p>
+                    <p style="font-size:0.7rem; margin-top:10px;">Supports: .html, .htm, .css, .js, .png, .jpg, .svg</p>
+                    <input type="file" id="fileInput" multiple accept=".html,.htm,.css,.js,.json,.txt,.png,.jpg,.jpeg,.gif,.svg,.ico,.webp">
+                    <button class="upload-btn" id="uploadBtn">Select Files</button>
+                </div>
+                
+                <div id="uploadProgress" class="upload-progress" style="display:none;">
+                    <div class="progress-bar-container">
+                        <div class="progress-bar"></div>
+                    </div>
+                    <p id="uploadStatus">Uploading files...</p>
+                </div>
+                
+                <div id="uploadSuccess" class="upload-success" style="display:none;">
+                    <i class="fas fa-check-circle"></i>
+                    <h3>Website Uploaded Successfully!</h3>
+                    <p>Your website is ready to preview:</p>
+                    <div class="success-buttons">
+                        <button class="btn-primary" id="viewUploadedBtn"><i class="fas fa-eye"></i> Preview Website</button>
+                        <button class="btn-primary" id="copyWebsiteUrlBtn"><i class="fas fa-copy"></i> Copy URL</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="websites-list">
+                <h3><i class="fas fa-folder-open"></i> Your Hosted Websites</h3>
+                <div id="websitesContainer" class="websites-grid"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="preview" class="preview-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Live <span>Preview</span></h2>
+                <p class="section-desc">See your website in action</p>
+            </div>
+            <div class="preview-container">
+                <div class="preview-header">
+                    <div class="preview-url-bar">
+                        <i class="fas fa-lock"></i>
+                        <span id="previewUrl">No website selected</span>
+                        <button id="refreshPreviewBtn"><i class="fas fa-sync-alt"></i></button>
+                        <button id="openNewTabBtn"><i class="fas fa-external-link-alt"></i></button>
+                    </div>
+                </div>
+                <iframe id="previewFrame" class="preview-frame" title="Website Preview" sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-modals"></iframe>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-logo">
+            <i class="fas fa-cloud-upload-alt"></i>
+            <span>BLACK<span>HOST</span></span>
+        </div>
+        <div class="footer-links">
+            <a href="#home">Home</a>
+            <a href="#dashboard">Dashboard</a>
+            <a href="#preview">Preview</a>
+        </div>
+        <p>© 2025 BLACK HOST | Free Website Hosting</p>
+    </div>
+</footer>
+
+<button id="backToTop" class="back-to-top"><i class="fas fa-arrow-up"></i></button>
+
+<script src="script.js"></script>
+</body>
+</html>
